@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=1072">
     </head>
     <body ng-controller="MainCtrl" ng-init="init()">
-        <div id="Loading"><img src="loading.gif" width="50px;" ><span>Loading... </span></div>
+        <div id="Loading"><img src="loading.gif" width="50px;"><span>Loading... </span></div>
         <div id="sideBar" class="sidebar">
             <div id="logo">
                 <img src="logo.png" />
@@ -17,116 +17,39 @@
                 <li><a href="#Time"><i class="glyphicon glyphicon-time"></i> <span>Time to Answer</span></a></li>
                 <li><a href="#Frequent"><i class="glyphicon glyphicon-user"></i> <span>Frequent Contacts</span></a></li>
                 <li><a href="#Contact"><i class="fa fa-line-chart"></i> <span>Contact History</span></a></li>
-                
             </ul>
         </div>
-        
+
         <div id="topBar">
             <div class="datePicker">
-                <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>  
-                
+                <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>
             </div>
-            
+
             <div>
                 <div id="mainHistogram">
-                    
+
                 </div>
             </div>
-             <div class="userDetails">
-                 <span>Tim Cook </span>
+            <div class="userDetails">
+                <span>Tim Cook </span>
                 <a href="#" class="profileImg" style="background-image: url('/imgs/profile/tim.jpg')"></a>
             </div>
         </div>
         <div id="container">
             <!----- Summary ------>
-            <div id="Summary" class="widget" ng-controller="SummaryCtrl">
-                <div class="wTitle">
-                    <h2>Summary</h2>
-                </div>
-                <ul class="sumaryList">
-                    <li>
-                        <span>{{ Summary.conversations }} </span><span>conversations</span>
-                    </li>
-                    <li>
-                        <span>{{ Summary.received }}</span><span>emails received</span>
-                    </li>
-                    <li>
-                        <span>{{ Summary.sent }} </span><span>emails sent</span>
-                    </li>
-                    <li>
-                        <span>{{ Summary.replied }}% </span><span>replied</span>
-                    </li>
-                    <li>
-                        <span>{{ Summary.takeToReply | timeStamp }} </span><span>you take to reply</span>
-                    </li>
-                    <li>
-                        <span>{{ Summary.takeToBeAnswared | timeStamp}} </span><span>people take to answare you</span>
-                    </li>
-                </ul>
-                
-                 <div class="wTitle">
-                    <h3>Distribution</h3>
-                </div>
-                <ul class="liCharts3">
-                    <li id="SummaryMonth">
-                        <h4>During the Month</h4>
-                        <div></div>
-                    </li>
-                    <li id="SummaryWeek">
-                        <h4>During the Week</h4>
-                        <div></div>
-                    </li>
-                    <li id="SummaryDay">
-                        <h4>During the Day</h4>
-                        <div></div>
-                    </li>
-                </ul>
-                <div class="legend">
-                    <span><i class="colorSent fa fa-stop"></i> Sent</span>
-                    <span><i class="colorReceived fa fa-stop"></i> Received</span>
-                </div>
-                <br>
-                <div class="wTitle">
-                    <h3>Top Threads</h3>
-                </div>
-                <table class="emailList">
-                    <tr ng-class="{read: !thread.Read}" ng-repeat="thread in Summary.TopThreads">
-                        <td ng-class="{fa: thread.Star, 'fa-star': thread.Star}"></td>
-                        <td class="contacts">{{ thread.Contacts | groupContacts: thread.NumMsg }}</td>
-                        <td class="subject">{{ thread.Subject }}</td>
-                        <td class="date">{{ thread.Date |  dateSmall }}</td>
-                    </tr>
-                </table>
-            </div>      
+            <ng-include src="'views/summary.html'"></ng-include>
+
             <!----- Unread Emails ------>
-            <div id="Unread" class="widget">
-                <div class="wTitle">
-                    <h2>Unread emails</h2>
-                </div>
-            </div>
-            
-            
+            <ng-include src="'views/unread.html'"></ng-include>
+
             <!----- Time to Answer ------>
-            <div id="Time"  class="widget">
-                <div class="wTitle">
-                    <h2>Time to Answer</h2>
-                </div>
-            </div>
-            
+            <ng-include src="'views/time.html'"></ng-include>
+
             <!----- Frequent Contacts ------>
-            <div id="Frequent" class="widget">
-                <div class="wTitle">
-                    <h2>Frequent Contacts</h2>
-                </div>
-            </div>
-            
-            
+            <ng-include src="'views/frequent.html'"></ng-include>
+
             <!----- Contact History ------>
-            <div id="Contact" class="widget">
-                <div class="wTitle">
-                    <h2>Contact History</h2>
-                </div>
-            </div>
+            <ng-include src="'views/contact.html'"></ng-include>
         </div>
     </body>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>

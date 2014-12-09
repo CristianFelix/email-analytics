@@ -1,0 +1,59 @@
+<div id="Summary" class="widget" ng-controller="SummaryCtrl">
+    <div class="wTitle">
+        <h2>Summary</h2>
+    </div>
+    <ul class="sumaryList">
+        <li>
+            <span>{{ Summary.conversations }} </span><span>conversations</span>
+        </li>
+        <li>
+            <span>{{ Summary.received }}</span><span>emails received</span>
+        </li>
+        <li>
+            <span>{{ Summary.sent }} </span><span>emails sent</span>
+        </li>
+        <li>
+            <span>{{ Summary.replied }}% </span><span>replied</span>
+        </li>
+        <li>
+            <span>{{ Summary.takeToReply | timeStamp }} </span><span>you take to reply</span>
+        </li>
+        <li>
+            <span>{{ Summary.takeToBeAnswared | timeStamp}} </span><span>people take to answare you</span>
+        </li>
+    </ul>
+
+    <div class="wTitle">
+        <h3>Distribution</h3>
+    </div>
+    <ul class="liCharts3">
+        <li id="SummaryMonth">
+            <h4>During the Month</h4>
+            <div></div>
+        </li>
+        <li id="SummaryWeek">
+            <h4>During the Week</h4>
+            <div></div>
+        </li>
+        <li id="SummaryDay">
+            <h4>During the Day</h4>
+            <div></div>
+        </li>
+    </ul>
+    <div class="legend">
+        <span><i class="colorSent fa fa-stop"></i> Sent</span>
+        <span><i class="colorReceived fa fa-stop"></i> Received</span>
+    </div>
+    <br>
+    <div class="wTitle">
+        <h3>Top Threads</h3>
+    </div>
+    <table class="emailList">
+        <tr ng-class="{read: !thread.Read}" ng-repeat="thread in Summary.TopThreads">
+            <td ng-class="{fa: thread.Star, 'fa-star': thread.Star}"></td>
+            <td class="contacts">{{ thread.Contacts | groupContacts: thread.NumMsg }}</td>
+            <td class="subject">{{ thread.Subject }}</td>
+            <td class="date">{{ thread.Date |  dateSmall }}</td>
+        </tr>
+    </table>
+</div>
