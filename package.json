@@ -1,5 +1,5 @@
 {
-  "name": "Email Analytics",
+  "name": "email-analytics",
   "version": "1.0.0",
   "description": "HCI Final Project",
   "main": "index.js",
@@ -10,10 +10,10 @@
   "dependencies": {
     "mongodb": "~2.0"
   },
-  "author": "Christian Kvalheim",
+  "author": "Cristian, Eric, Gopikrishna, Priyanka ",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/christkv/myfirstproject/issues"
+    "url": "https://github.com/CristianFelix/email-analytics/issues"
   },
-  "homepage": "https://github.com/christkv/myfirstproject"
+  "homepage": "https://email-analytics.herokuapp.com"
 }
