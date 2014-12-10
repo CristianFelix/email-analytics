@@ -62,14 +62,16 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
     }
 
     $scope.getFilteredData = function () {
-        $scope.$on("$includeContentLoaded", function () {
-            DB.getMainData($scope.start, $scope.end, function (data) {
-                $scope.Summary = data.Summary;
-            });
+        DB.getMainData($scope.start, $scope.end, function (data) {
+            $scope.Summary = data.Summary;
+        });
 
-            setScroolSpy(0);
-        })
+        setScroolSpy(0);
     }
+
+    $scope.$on("$includeContentLoaded", function () {
+        $scope.getFilteredData();
+    })
 } ]);
 
 

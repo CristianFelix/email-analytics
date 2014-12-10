@@ -33,7 +33,7 @@ html, body, .table {
     overflow: hidden;
     margin: auto;
     margin-bottom: 50px;
-    width: 310px;
+    width: 335px;
     background-color: #FFF;
 }
 
@@ -48,6 +48,7 @@ html, body, .table {
     font-size: 30px;
     line-height: 50px;
     display: block;
+    text-transform: uppercase;
 }
 
 .signin {
@@ -61,6 +62,10 @@ html, body, .table {
     clear: both;
     margin: auto;
     margin-bottom: 25px;
+}
+
+.signin:hover {
+    box-shadow: 0 0 3px #AAA;
 }
 
 .statements a {
