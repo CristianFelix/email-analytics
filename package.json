@@ -1,0 +1,19 @@
+{
+  "name": "Email Analytics",
+  "version": "1.0.0",
+  "description": "HCI Final Project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CristianFelix/email-analytics.git"
+  },
+  "dependencies": {
+    "mongodb": "~2.0"
+  },
+  "author": "Christian Kvalheim",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/christkv/myfirstproject/issues"
+  },
+  "homepage": "https://github.com/christkv/myfirstproject"
+}
