@@ -114,23 +114,24 @@ body {
 #sidebar .menu li {
     border-top: solid 1px #313b4d;
     height: 40px;
-    padding-top: 10px;
-    padding-left: 15px;
 }
 
 #sidebar .menu li a {
     color: #777D8B;
     text-decoration: none;
     transition: color .3s;
+    padding: 10px 15px;
+    display: block;
+    border-left: 5px solid transparent;
+    transition: border .6s;
 }
 
 #sidebar .menu li:hover a {
     color: #FFF;
 }
 
-#sidebar .menu li.active {
-    border-left: solid 5px #43AEA8;
-    padding-left: 10px;
+#sidebar .menu li.active a {
+    border-left-color: #43AEA8;
 }
 
 #sidebar .menu li span {

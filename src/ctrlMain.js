@@ -40,7 +40,6 @@ EmailApp.filter('groupContacts', function () {
 //Main Controller
 EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
     $scope.init = function () {
-        setScroolSpy(0);
 
         //Get date and draw istogram
         _histDate = new DateHistogram("#mainHistogram");
@@ -67,6 +66,8 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
             DB.getMainData($scope.start, $scope.end, function (data) {
                 $scope.Summary = data.Summary;
             });
+
+            setScroolSpy(0);
         })
     }
 } ]);
@@ -91,7 +92,7 @@ var setScroolSpy = function () {
         }, 500);
         e.preventDefault();
     });
-
+    console.log(scrollItems);
 
     $(window).scroll(function () {
         var fromTop = $(this).scrollTop() + topMenuHeight;
@@ -112,7 +113,7 @@ var setScroolSpy = function () {
 
         cur = cur[cur.length - 1];
         var id = cur && cur.length ? cur[0].id : "Summary";
-
+        console.log(id);
         if (lastId !== id) {
             lastId = id;
             menuItems
