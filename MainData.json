@@ -1,0 +1,41 @@
+{
+    "Summary": {
+        "conversations": 1050,
+        "received": 3015,
+        "sent": 250,
+        "replied": 5,
+        "takeToReply": 170,
+        "takeToBeAnswared": 4320,
+        "MostActive":[{"Day":"Sun","Sent":5,"Received":10},{"Day":"Mon","Sent":2,"Received":20},{"Day":"Tue","Sent":1,"Received":3},{"Day":"Wed","Sent":1,"Received":15},{"Day":"Thu","Sent":5,"Received":13},{"Day":"Fri","Sent":3,"Received":13},{"Day":"Sat","Sent":5,"Received":19}],
+        "MostActiveHours":[{"Hour":0,"Sent":5,"Received":6},{"Hour":1,"Sent":1,"Received":4},{"Hour":2,"Sent":3,"Received":19},{"Hour":3,"Sent":3,"Received":8},{"Hour":4,"Sent":5,"Received":13},{"Hour":5,"Sent":3,"Received":18},{"Hour":6,"Sent":4,"Received":7},{"Hour":7,"Sent":4,"Received":17},{"Hour":8,"Sent":1,"Received":13},{"Hour":9,"Sent":5,"Received":14},{"Hour":10,"Sent":2,"Received":5},{"Hour":11,"Sent":3,"Received":14},{"Hour":12,"Sent":4,"Received":6},{"Hour":13,"Sent":5,"Received":20},{"Hour":14,"Sent":5,"Received":20},{"Hour":15,"Sent":4,"Received":9},{"Hour":16,"Sent":5,"Received":11},{"Hour":17,"Sent":2,"Received":2},{"Hour":18,"Sent":3,"Received":2},{"Hour":19,"Sent":3,"Received":3},{"Hour":20,"Sent":4,"Received":7},{"Hour":21,"Sent":3,"Received":4},{"Hour":22,"Sent":1,"Received":10},{"Hour":23,"Sent":5,"Received":9}],
+        "MostActiveMDays":[{"Day":0,"Sent":1,"Received":9},{"Day":1,"Sent":4,"Received":10},{"Day":2,"Sent":1,"Received":13},{"Day":3,"Sent":1,"Received":5},{"Day":4,"Sent":5,"Received":2},{"Day":5,"Sent":2,"Received":4},{"Day":6,"Sent":3,"Received":8},{"Day":7,"Sent":4,"Received":15},{"Day":8,"Sent":5,"Received":5},{"Day":9,"Sent":1,"Received":16},{"Day":10,"Sent":5,"Received":14},{"Day":11,"Sent":3,"Received":3},{"Day":12,"Sent":5,"Received":10},{"Day":13,"Sent":4,"Received":7},{"Day":14,"Sent":5,"Received":12},{"Day":15,"Sent":4,"Received":5},{"Day":16,"Sent":3,"Received":4},{"Day":17,"Sent":2,"Received":9},{"Day":18,"Sent":1,"Received":16},{"Day":19,"Sent":4,"Received":19},{"Day":20,"Sent":3,"Received":12},{"Day":21,"Sent":5,"Received":4},{"Day":22,"Sent":3,"Received":18},{"Day":23,"Sent":2,"Received":15},{"Day":24,"Sent":1,"Received":6},{"Day":25,"Sent":3,"Received":15},{"Day":26,"Sent":3,"Received":1},{"Day":27,"Sent":1,"Received":3},{"Day":28,"Sent":5,"Received":15},{"Day":29,"Sent":5,"Received":13},{"Day":30,"Sent":4,"Received":16}],
+        "TopThreads": [
+            {
+                "Contacts": [{"Name": "Tim Cook", "email": "tim@apple.com"}],
+                "Subject": "Crafting your next design?",
+                "Date": "2014-10-26",
+                "Star": false,
+                "Read": false,
+                "NumMsg": 1
+            },
+            {
+                "Contacts": [{"Name": "Tim Cook", "email": "tim@apple.com"}, {"Name": "Bill Gates", "email": "bill@microsoft.com"}],
+                "Subject": "Office for Mac",
+                "Date": "2014-10-10",
+                "Star": true,
+                "Read": true,
+                "NumMsg": 2
+            },
+            {
+                "Contacts": [{"Name": "Tim Cook", "email": "tim@apple.com"}, {"Name": "Cristian Felix", "email": "cristian.felix@nyu.com"}, {"Name": "Lerry Elison", "email": "elison@oracle.com"}],
+                "Subject": "MySql on Mac OS X",
+                "Date": "2014-9-30",
+                "Star": false,
+                "Read": true,
+                "NumMsg": 4
+            }
+        ]
+    }
+}
+
+

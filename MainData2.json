@@ -1,0 +1,16 @@
+{
+    "Summary": {
+        "conversations":2050,
+        "received":2325,
+        "sent":587,
+        "replied":12,
+        "takeToReply":250,
+        "takeToBeAnswared":104320,
+        "MostActive":[{"Day":"Sun","Sent":1,"Received":5},{"Day":"Mon","Sent":5,"Received":17},{"Day":"Tue","Sent":5,"Received":13},{"Day":"Wed","Sent":4,"Received":17},{"Day":"Thu","Sent":3,"Received":14},{"Day":"Fri","Sent":4,"Received":18},{"Day":"Sat","Sent":2,"Received":2}],
+        "MostActiveHours":[{"Hour":0,"Sent":5,"Received":7},{"Hour":1,"Sent":5,"Received":9},{"Hour":2,"Sent":1,"Received":3},{"Hour":3,"Sent":4,"Received":3},{"Hour":4,"Sent":5,"Received":19},{"Hour":5,"Sent":4,"Received":3},{"Hour":6,"Sent":5,"Received":6},{"Hour":7,"Sent":5,"Received":14},{"Hour":8,"Sent":2,"Received":2},{"Hour":9,"Sent":5,"Received":10},{"Hour":10,"Sent":4,"Received":5},{"Hour":11,"Sent":4,"Received":16},{"Hour":12,"Sent":3,"Received":13},{"Hour":13,"Sent":1,"Received":11},{"Hour":14,"Sent":3,"Received":15},{"Hour":15,"Sent":1,"Received":5},{"Hour":16,"Sent":3,"Received":19},{"Hour":17,"Sent":2,"Received":10},{"Hour":18,"Sent":5,"Received":18},{"Hour":19,"Sent":5,"Received":14},{"Hour":20,"Sent":1,"Received":12},{"Hour":21,"Sent":4,"Received":1},{"Hour":22,"Sent":1,"Received":11},{"Hour":23,"Sent":1,"Received":7}],
+        "MostActiveMDays":[{"Day":0,"Sent":5,"Received":16},{"Day":1,"Sent":3,"Received":1},{"Day":2,"Sent":2,"Received":2},{"Day":3,"Sent":3,"Received":12},{"Day":4,"Sent":1,"Received":9},{"Day":5,"Sent":4,"Received":2},{"Day":6,"Sent":3,"Received":13},{"Day":7,"Sent":5,"Received":6},{"Day":8,"Sent":4,"Received":6},{"Day":9,"Sent":3,"Received":12},{"Day":10,"Sent":3,"Received":8},{"Day":11,"Sent":5,"Received":6},{"Day":12,"Sent":5,"Received":9},{"Day":13,"Sent":1,"Received":3},{"Day":14,"Sent":3,"Received":11},{"Day":15,"Sent":5,"Received":17},{"Day":16,"Sent":4,"Received":1},{"Day":17,"Sent":2,"Received":18},{"Day":18,"Sent":1,"Received":10},{"Day":19,"Sent":5,"Received":4},{"Day":20,"Sent":5,"Received":14},{"Day":21,"Sent":2,"Received":1},{"Day":22,"Sent":2,"Received":14},{"Day":23,"Sent":4,"Received":10},{"Day":24,"Sent":1,"Received":14},{"Day":25,"Sent":1,"Received":6},{"Day":26,"Sent":4,"Received":14},{"Day":27,"Sent":3,"Received":13},{"Day":28,"Sent":5,"Received":18},{"Day":29,"Sent":5,"Received":18},{"Day":30,"Sent":3,"Received":7}]
+        
+    }
+}
+
+

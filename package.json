@@ -1,0 +1,20 @@
+{
+  "name": "email-analytics",
+  "version": "1.0.0",
+  "description": "HCI Final Project",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/CristianFelix/email-analytics.git"
+  },
+  "dependencies": {
+    "mongodb": "~2.0",
+    "express": "~4.9.x"
+  },
+  "author": "Cristian, Eric, Gopikrishna, Priyanka ",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/CristianFelix/email-analytics/issues"
+  },
+  "homepage": "https://email-analytics.herokuapp.com"
+}

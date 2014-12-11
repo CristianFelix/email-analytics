@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <link href="css/login.css" rel="stylesheet" type="text/css">
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="table">
+            <div class="cell">
+                <div class="wrapper">
+                    <div id="logo-chart" class="logo"></div>
+                    <div class="title"><span>Email</span><span>Analytics</span></div>
+                    <a href="index.html"><div class="signin"></div></a>
+                    <div class="statements">
+                        <a data-target="privacy" style="text-align: left">Privacy Policy</a>
+                        <a data-target="about" style="text-align: right">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/html" id="privacy">
+            <div class="header">Privacy Policiy<div class="close">Close</div></div>
+            <div class="body">Whole bunch of statements comes here.</div>
+        </script>
+        <script type="text/html" id="about">
+            <div class="header">About Us<div class="close">Close</div></div>
+            <div class="body">
+                <div>Email Analytics</div>
+                <div>By</div>
+                <div>Cristian Felix Da Silva - cfd264</div>
+                <div>Gopikrishna Sathyamurthy - gs1922</div>
+                <div>Priyanka Udayakumar - pu273</div>
+                <div>Zhiguang Eric Zhang - zez205</div>
+            </div>
+        </script>
+        <script>
+            $(function () {
+                var data = [60, 40];
+
+                var svg = d3.select("#logo-chart").append("svg").attr("width", 100).attr("height", 100);
+                var group = svg.append("g").attr("transform", "translate(50, 50)");
+
+                var arc = d3.svg.arc().outerRadius(47).innerRadius(27);
+                var pie = d3.layout.pie().value(function (d) { return d; });
+
+                var color = d3.scale.ordinal().range(["#43aea8", "#2f96e9"]);
+
+
+                var arcs = group.selectAll(".arc").data(pie(data)).enter().append("g").attr("class", "arc");
+
+                arcs.append("path").attr("d", arc).style("fill", function (d) { return color(d.data) });
+
+                var overlay = $("<div class='overlay' />")
+                                .append($("<div class='table' />")
+                                .append($("<div class='cell' />")
+                                .append($("<div class='wrapper' />"))));
+
+                $(".statements a").click(function () {
+                    $(".wrapper", overlay).html($("script#" + $(this).data("target")).html());
+                    $("body").append(overlay);
+                    $("body .overlay").addClass($(this).data("target"));
+                    setTimeout(function () {
+                        $("body .overlay").addClass("show");
+                    }, 1);
+                    $(".close", overlay).click(function () {
+                        $("body .overlay").removeClass("show");
+                        setTimeout(function () {
+                            $("body .overlay").remove();
+                        }, 501);
+                    });
+                })
+            });
+        </script>
+    </body>
+</html>
