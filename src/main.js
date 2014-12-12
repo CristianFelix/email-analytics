@@ -14,8 +14,8 @@ $(function () {
     var fromDP = $("#topbar .dropdown .datepicker.from");
     var toDP = $("#topbar .dropdown .datepicker.to");
 
-    $(".datePickerWrap").click(function () {
-        $(this).addClass("open");
+    $(".datePickerWrap .dp-field").click(function () {
+        $(this).closest(".datePickerWrap").addClass("open");
     });
 
     fromDP.datepicker({
@@ -25,6 +25,7 @@ $(function () {
             toDP.datepicker("option", "minDate", selectedDate);
         }
     });
+
     toDP.datepicker({
         defaultDate: nextDate,
         minDate: startDate,
@@ -38,7 +39,18 @@ $(function () {
 
         fromDP.datepicker("setDate", sDate);
         toDP.datepicker("setDate", nDate);
+
+        $(".time-update").click();
     }
+
+    $(".time-update").click(function () {
+        var sDate = fromDP.datepicker('getDate'), nDate = toDP.datepicker('getDate');
+        angular.element(document.querySelector("[ng-controller='MainCtrl']")).scope().changeDates(sDate, nDate);
+        $(this).closest(".datePickerWrap").removeClass("open");
+    });
+
+    $(".time-cancel-update").click(function () { $(this).closest(".datePickerWrap").removeClass("open"); });
+
     $(".time-select .time").click(function () {
         var self = $(this);
         var date = new Date();

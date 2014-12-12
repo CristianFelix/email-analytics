@@ -34,9 +34,6 @@ EmailApp.filter('groupContacts', function () {
     };
 });
 
-
-
-
 //Main Controller
 EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
     $scope.init = function () {
@@ -56,6 +53,12 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
         }
         DB.getGeneralHistogram(_histDate.draw);
 
+        $scope.changeDates = function (start, end) { // called from datepickers // main.js
+            $scope.start = start,
+            $scope.end = end;
+            if (!$scope.$$phase) $scope.$apply();
+            $scope.getFilteredData();
+        }
 
         //Remove loading
         document.getElementById('Loading').style.display = "none";

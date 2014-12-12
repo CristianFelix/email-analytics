@@ -173,7 +173,7 @@ body {
     font-size: 20px;
 }
 
-#topBar .datePickerWrap > span {
+#topBar .datePickerWrap .dp-field span {
     padding-left: 10px;
     width: 390px;
     display: inline-block;
@@ -227,6 +227,11 @@ body {
     color: white;
     margin: 14px 20px 0;
     outline: none;
+}
+
+#topBar .datePickerWrap .time-cancel-update:hover {
+    text-decoration: none;
+    color: #c0392b;
 }
 
 #topBar .datePickerWrap .time-update:hover {

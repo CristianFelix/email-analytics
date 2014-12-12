@@ -23,7 +23,9 @@
 
         <div id="topBar">
             <div class="datePickerWrap">
-                <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>
+                <div class="dp-field">
+                    <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>
+                </div>
                 <div class="dropdown">
                     <div class="picks">
                         <div class="datepicker from"></div>
@@ -44,6 +46,7 @@
                         </tr>
                     </table>
                     <div style="text-align: right">
+                        <a class="time-cancel-update">Cancel</a>
                         <button class="time-update">Ok</button>
                     </div>
                 </div>
