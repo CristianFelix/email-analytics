@@ -3,8 +3,8 @@ var startDate = (function (s) { var d = new Date(s.getTime()); d.setMonth(d.getM
 
 function bindViewEvents() {
     // bind All the event for individual view inside this function    
-    $(".widget .wTitle i").unbind("click").click(function (e) {
-        $(this).toggleClass("fa-caret-right");
+    $(".widget .wTitle h2").unbind("click").click(function (e) {
+        $("i.min", this).toggleClass("fa-caret-right");
         $(this).closest(".widget").toggleClass("minimize");
         console.log("I am called");
     });

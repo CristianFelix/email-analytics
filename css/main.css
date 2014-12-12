@@ -288,8 +288,41 @@ body {
     margin-top: 20px;
 }
 
-.widget .wTitle i {
+.widget .wTitle i.min {
     margin: 0 5px;
+}
+
+.widget .wTitle i.help {
+    float: right;
+    position: relative;
+}
+
+.widget.minimize .wTitle i.help {
+    display: none;
+}
+
+.widget .wTitle i.help span.help-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #FFF;
+    box-shadow: 0 0 10px #CCC;
+    width: 0;
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+    font-size: 0;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    
+    transition: all .2s ease-in-out;
+}
+
+.widget .wTitle i.help:hover span.help-content {
+    padding: 15px;
+    opacity: 1;
+    max-height: 300px;
+    width: 300px;
+    font-size: 14px;
 }
 
 .widget .sumaryList {
