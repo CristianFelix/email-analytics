@@ -94,7 +94,6 @@ var setScroolSpy = function () {
         }, 500);
         e.preventDefault();
     });
-    console.log(scrollItems);
 
     $(window).scroll(function () {
         var fromTop = $(this).scrollTop() + topMenuHeight;
@@ -115,7 +114,6 @@ var setScroolSpy = function () {
 
         cur = cur[cur.length - 1];
         var id = cur && cur.length ? cur[0].id : "Summary";
-        console.log(id);
         if (lastId !== id) {
             lastId = id;
             menuItems

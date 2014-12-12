@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/jquery-ui.theme.min.css" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
         <meta name="viewport" content="width=1072">
     </head>
@@ -21,8 +22,31 @@
         </div>
 
         <div id="topBar">
-            <div class="datePicker">
-                <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>
+            <div class="datePickerWrap">
+                <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down wedge"></i>
+                <div class="dropdown">
+                    <div class="picks">
+                        <div class="datepicker from"></div>
+                        <div class="datepicker to"></div>
+                    </div>
+                    <table class="time-select">
+                        <tr>
+                            <td><a class="time ty">This Year</a></td>
+                            <td><a class="time tm">This Month</a></td>
+                            <td><a class="time tw">This Week</a></td>
+                            <td><a class="time td">Today</a></td>
+                        </tr>
+                        <tr>
+                            <td><a class="time ly">Last Year</a></td>
+                            <td><a class="time lm">Last Month</a></td>
+                            <td><a class="time lw">Last Week</a></td>
+                            <td><a class="time ld">Yesterday</a></td>
+                        </tr>
+                    </table>
+                    <div style="text-align: right">
+                        <button class="time-update">Ok</button>
+                    </div>
+                </div>
             </div>
 
             <div>
@@ -51,21 +75,17 @@
             <!----- Contact History ------>
             <ng-include src="'views/contact.html'"></ng-include>
         </div>
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="http://momentjs.com/downloads/moment.js" charset="utf-8"></script>
+        <script src="src/jquery-ui.min.js"></script>
+        <script src="src/main.js"></script>
+        <script src="src/charts.js" charset="utf-8"></script>
+        <script src="src/ctrlMain.js" charset="utf-8"></script>
+        <script src="src/ctrlSummary.js" charset="utf-8"></script>
+        <script src="src/services.js"></script>
     </body>
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-resource.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="http://momentjs.com/downloads/moment.js" charset="utf-8"></script>
-    <script src="src/charts.js" charset="utf-8"></script>
-    <script src="src/ctrlMain.js" charset="utf-8"></script>
-    <script src="src/ctrlSummary.js" charset="utf-8"></script>
-    <script src="src/services.js"></script>
 </html>
-
-<script>
-    $("i").click(function(){
-$( this ).toggleClass( "fa-caret-right" );
-    });
-</script>
