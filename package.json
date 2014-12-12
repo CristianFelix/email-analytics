@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "mongodb": "~2.0",
-    "express": "~4.9.x"
+    "express": "~4.9.x",
+    "googleapis": "~1.0",
+    "wait.for": "~0.6.6",
+    "deasync": "~0.0.7",
+    "fibers": "~1.0.2"
   },
   "author": "Cristian, Eric, Gopikrishna, Priyanka ",
   "license": "Apache 2.0",
