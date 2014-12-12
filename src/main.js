@@ -73,4 +73,7 @@ $(function () {
             setDateRange(new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1), new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1));
         }
     });
+
+    $("#topbar .menu-bars").click(function () { $("#sidebar").addClass("open"); })
+    $("#sidebar .close-menu").click(function () { $("#sidebar").removeClass("open"); })
 });

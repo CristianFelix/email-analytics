@@ -8,9 +8,10 @@
     </head>
     <body ng-controller="MainCtrl" ng-init="init()">
         <div id="Loading"><img src="loading.gif" width="50px;"><span>Loading... </span></div>
-        <div id="sideBar" class="sidebar">
+        <div id="sidebar" class="sidebar">
             <div id="logo">
                 <img src="logo.png" />
+                <i class="fa fa-close close-menu"></i>
             </div>
             <ul class="menu">
                 <li class="active"><a href="#Summary"><i class="glyphicon glyphicon-list-alt"></i> <span>Summary</span></a></li>
@@ -22,9 +23,11 @@
         </div>
 
         <div id="topBar">
+            <i class="fa fa-bars menu-bars"></i>
             <div class="datePickerWrap">
                 <div class="dp-field">
-                    <i class="fa fa-calendar"></i> <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-calendar"></i>
+                    <span>From {{start | dateSmall}} to {{end | dateSmall}} </span> <i class="fa fa-caret-down"></i>
                 </div>
                 <div class="dropdown">
                     <div class="picks">
