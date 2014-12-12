@@ -114,6 +114,7 @@ body {
     background-color: white;
     padding: 10px;
     box-shadow: 0px 5px 10px #ddd;
+    z-index: 3;
 }
 
 #topBar .menu-bars {
@@ -275,6 +276,7 @@ body {
     border-bottom: solid 1px #D5DFE5;
     padding-bottom: 5px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .widget .wTitle h2 {
