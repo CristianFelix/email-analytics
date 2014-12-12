@@ -53,7 +53,7 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
         }
         DB.getGeneralHistogram(_histDate.draw);
 
-        $scope.changeDates = function (start, end) { // called from datepickers // main.js
+        $scope.changeDates = function (start, end) { // called from datepickers // main.js:48
             $scope.start = start,
             $scope.end = end;
             if (!$scope.$$phase) $scope.$apply();
