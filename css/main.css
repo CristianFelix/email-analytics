@@ -288,6 +288,13 @@ body {
     box-shadow: 0px 2px 5px #CCC;
     padding: 10px;
     margin-bottom: 30px;
+    transition: min-height .3s ease-in-out;
+}
+
+.widget.minimize {
+    min-height: 37px;
+    overflow: hidden;
+    height: 37px;
 }
 
 .widget .wTitle {
@@ -305,6 +312,10 @@ body {
     font-size: 16px;
     margin: 0px;
     margin-top: 20px;
+}
+
+.widget .wTitle i {
+    margin: 0 5px;
 }
 
 .widget .sumaryList {

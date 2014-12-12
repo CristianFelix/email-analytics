@@ -1,11 +1,18 @@
 var nextDate = new Date();
 var startDate = (function (s) { var d = new Date(s.getTime()); d.setMonth(d.getMonth() - 1); return d; } (nextDate));
+
+function bindViewEvents() {
+    // bind All the event for individual view inside this function    
+    $(".widget .wTitle i").unbind("click").click(function (e) {
+        $(this).toggleClass("fa-caret-right");
+        $(this).closest(".widget").toggleClass("minimize");
+        console.log("I am called");
+    });
+}
+
 $(function () {
     var fromDP = $("#topbar .dropdown .datepicker.from");
     var toDP = $("#topbar .dropdown .datepicker.to");
-    $("i").click(function () {
-        $(this).toggleClass("fa-caret-right");
-    });
 
     $(".datePickerWrap").click(function () {
         $(this).addClass("open");

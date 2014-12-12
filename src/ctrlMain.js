@@ -69,8 +69,10 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
         setScroolSpy(0);
     }
 
-    $scope.$on("$includeContentLoaded", function () {
+    $scope.$on("$includeContentLoaded", function (e) {
         $scope.getFilteredData();
+        if (e.targetScope.$$nextSibling == null)
+            bindViewEvents(); // declared at main.js:4
     })
 } ]);
 
@@ -88,7 +90,9 @@ var setScroolSpy = function () {
 
     menuItems.click(function (e) {
         var href = $(this).attr("href"),
-              offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+              offsetTop = href === "#" ? 0 : function () {
+                  $(href).removeClass("minimize"); return $(href).offset().top - topMenuHeight + 1
+              } ();
         $('html, body').stop().animate({
             scrollTop: offsetTop
         }, 500);
