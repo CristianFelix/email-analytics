@@ -34,9 +34,6 @@ EmailApp.filter('groupContacts', function () {
     };
 });
 
-
-
-
 //Main Controller
 EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
     $scope.init = function () {
@@ -56,6 +53,12 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
         }
         DB.getGeneralHistogram(_histDate.draw);
 
+        $scope.changeDates = function (start, end) { // called from datepickers // main.js:48
+            $scope.start = start,
+            $scope.end = end;
+            if (!$scope.$$phase) $scope.$apply();
+            $scope.getFilteredData();
+        }
 
         //Remove loading
         document.getElementById('Loading').style.display = "none";
@@ -69,8 +72,10 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
         setScroolSpy(0);
     }
 
-    $scope.$on("$includeContentLoaded", function () {
+    $scope.$on("$includeContentLoaded", function (e) {
         $scope.getFilteredData();
+        if (e.targetScope.$$nextSibling == null)
+            bindViewEvents(); // declared at main.js:4
     })
 } ]);
 
@@ -88,13 +93,14 @@ var setScroolSpy = function () {
 
     menuItems.click(function (e) {
         var href = $(this).attr("href"),
-              offsetTop = href === "#" ? 0 : $(href).offset().top - topMenuHeight + 1;
+              offsetTop = href === "#" ? 0 : function () {
+                  $(href).removeClass("minimize"); return $(href).offset().top - topMenuHeight + 1
+              } ();
         $('html, body').stop().animate({
             scrollTop: offsetTop
         }, 500);
         e.preventDefault();
     });
-    console.log(scrollItems);
 
     $(window).scroll(function () {
         var fromTop = $(this).scrollTop() + topMenuHeight;
@@ -115,7 +121,6 @@ var setScroolSpy = function () {
 
         cur = cur[cur.length - 1];
         var id = cur && cur.length ? cur[0].id : "Summary";
-        console.log(id);
         if (lastId !== id) {
             lastId = id;
             menuItems

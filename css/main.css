@@ -32,59 +32,6 @@ body {
     font-size: 20px;
 }
 
-
-/* Media Selector ----------------------*/
-@media (max-width: 1201px) {
-    #topBar {
-        left: 50px !important;
-    }
-
-    #container {
-        margin-left: 50px !important;
-    }
-
-    #sidebar {
-        width: 50px !important;
-    }
-
-    #sidebar .menu li a span {
-        display: none;
-    }
-
-    #sidebar #logo {
-        height: 100px;
-        text-align: left !important;
-        padding: 0px !important;
-    }
-
-    #sidebar #logo img {
-        width: 80px !important;
-        transform: rotate(270deg);
-        transform-origin: 50 40;
-        -webkit-transform: rotate(270deg);
-        -webkit-transform-origin: 50 40;
-    }
-}
-
-@media (max-width: 1070px) {
-    #topBar {
-        left: 0px !important;
-    }
-
-    #container {
-        margin-left: 0px !important;
-    }
-
-    #sidebar {
-        height: 100px !important;
-        display: none;
-        !important;
-    }
-
-    #sidebar .menu li {
-    }
-}
-
 /* SideBar ---------------------------*/
 #sidebar {
     width: 200px;
@@ -93,6 +40,8 @@ body {
     float: left;
     position: fixed;
     z-index: 1;
+    overflow: hidden;
+    transition: width .3s ease-in-out;
 }
 
 #sidebar #logo {
@@ -105,6 +54,19 @@ body {
     width: 180px;
 }
 
+#sidebar #logo i.close-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #BAC3D2;
+    opacity: .75;
+    display: none;
+}
+
+#sidebar #logo i.close-menu:hover {
+    opacity: 1;
+}
 
 #sidebar .menu {
     padding: 0px;
@@ -147,36 +109,103 @@ body {
 #topBar {
     height: 100px;
     position: fixed;
-    right: 0px;
     left: 200px;
+    right: 0;
     background-color: white;
-    min-width: 1000px;
     padding: 10px;
     box-shadow: 0px 5px 10px #ddd;
+    z-index: 3;
 }
 
-#topBar .datePicker {
+#topBar .menu-bars {
+    float: left;
+    font-size: 20px;
+    color: #BAC3D2;
+    padding-top: 5px;
+    display: none;
+}
+
+#topBar .datePickerWrap {
     width: 430px;
     color: #777D8B;
     border-bottom: solid 1px #43AEA8;
     cursor: pointer;
+    position: relative;
 }
 
-#topBar .datePicker i {
+#topBar .datePickerWrap i {
     color: #43AEA8;
     display: inline-block;
     line-height: 20px;
 }
 
-#topBar .datePicker i:first-child {
+#topBar .datePickerWrap i:first-child {
     font-size: 20px;
 }
 
-#topBar .datePicker span {
+#topBar .datePickerWrap .dp-field span {
     padding-left: 10px;
     width: 390px;
     display: inline-block;
     font-size: 20px;
+}
+
+#topBar .datePickerWrap .dropdown {
+    position: absolute;
+    width: 555px;
+    padding: 20px;
+    height: 425px;
+    background-color: white;
+    top: 100%;
+    left: 0;
+    overflow: hidden;
+    box-shadow: 0 0 10px #888;
+    display: none;
+}
+
+#topBar .datePickerWrap.open .dropdown {
+    display: block;
+}
+
+#topBar .datePickerWrap .dropdown .picks {
+    height: 275px;
+}
+
+#topBar .datePickerWrap .dropdown .datepicker {
+    display: inline-block;
+    margin: 5px 8px;
+}
+
+#topBar .datePickerWrap .time-select {
+    width: 100%;
+}
+
+#topBar .datePickerWrap .time-select td {
+    width: 25%;
+    padding: 5px 0;
+    text-align: center;
+}
+
+#topBar .datePickerWrap .time-select a {
+    color: #43AEA8;
+}
+
+#topBar .datePickerWrap .time-update {
+    background-color: #313b4d;
+    border: none;
+    padding: 7px 25px;
+    color: white;
+    margin: 14px 20px 0;
+    outline: none;
+}
+
+#topBar .datePickerWrap .time-cancel-update:hover {
+    text-decoration: none;
+    color: #c0392b;
+}
+
+#topBar .datePickerWrap .time-update:hover {
+    background-color: #43AEA8;
 }
 
 #topBar #mainHistogram {
@@ -234,12 +263,20 @@ body {
     box-shadow: 0px 2px 5px #CCC;
     padding: 10px;
     margin-bottom: 30px;
+    transition: min-height .3s ease-in-out;
+}
+
+.widget.minimize {
+    min-height: 37px;
+    overflow: hidden;
+    height: 37px;
 }
 
 .widget .wTitle {
     border-bottom: solid 1px #D5DFE5;
     padding-bottom: 5px;
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .widget .wTitle h2 {
@@ -251,6 +288,43 @@ body {
     font-size: 16px;
     margin: 0px;
     margin-top: 20px;
+}
+
+.widget .wTitle i.min {
+    margin: 0 5px;
+}
+
+.widget .wTitle i.help {
+    float: right;
+    position: relative;
+}
+
+.widget.minimize .wTitle i.help {
+    display: none;
+}
+
+.widget .wTitle i.help span.help-content {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #FFF;
+    box-shadow: 0 0 10px #CCC;
+    width: 0;
+    max-height: 0;
+    padding: 0;
+    opacity: 0;
+    font-size: 0;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+    
+    transition: all .2s ease-in-out;
+}
+
+.widget .wTitle i.help:hover span.help-content {
+    padding: 15px;
+    opacity: 1;
+    max-height: 300px;
+    width: 300px;
+    font-size: 14px;
 }
 
 .widget .sumaryList {
@@ -394,4 +468,81 @@ body {
 
 .brush .extent {
     fill-opacity: .08;
+}
+
+/* Media Selector ----------------------*/
+@media (max-width: 1201px) {
+    #topBar {
+        left: 50px;
+    }
+
+    #container {
+        margin-left: 50px;
+    }
+
+    #sidebar {
+        width: 50px;
+    }
+
+    #sidebar .menu li a span {
+        visibility: collapse;
+    }
+
+    #sidebar #logo {
+        height: 100px;
+        padding: 0px;
+    }
+
+    #sidebar #logo img {
+        width: 80px;
+        transform: rotate(270deg);
+        transform-origin: 50 40;
+        -webkit-transform: rotate(270deg);
+        -webkit-transform-origin: 50 40;
+    }
+}
+
+@media (max-width: 1070px) {
+    #topBar {
+        left: 0px;
+    }
+
+    #topBar .menu-bars {
+        display: block;
+    }
+
+    #topBar .datePickerWrap {
+        margin-left: 30px;
+    }
+
+    #container {
+        margin-left: 0px;
+    }
+
+    #sidebar {
+        width: 0;
+    }
+
+    #sidebar.open {
+        width: 200px;
+    }
+
+    #sidebar .menu li a span {
+        visibility: visible;
+    }
+
+    #sidebar #logo {
+        height: 100px;
+        padding-top: 20px;
+    }
+
+    #sidebar #logo img {
+        width: 180px;
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+
+    #sidebar #logo i.close-menu {
+        display: block;
+    }
 }
