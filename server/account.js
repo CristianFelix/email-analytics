@@ -2,7 +2,7 @@ var DB = require(__dirname + '/db.js');
 var Gmail2 = require(__dirname + '/Gmail2.js');
 var db = new DB();
 var moment = require('moment');
-
+var user = "cristian.felix@gmail.com";
 var GmailLib = require('node-gmail-api')
 var working = false;  
 
@@ -55,10 +55,10 @@ var Account = function (code) {
 	}
 
 	self.refresh = function(code){
-		/*
+		
 		g.getMessages(function(result){
 			console.log(result);
-		});*/
+		});
 	}
 
 	self.init();
@@ -117,7 +117,9 @@ var Gmail = function () {
 			dbm.starred = true;
 		else
 			dbm.starred = false;
-
+        
+        dbm.user = user;
+        
 		return dbm;
 
 	}
@@ -211,11 +213,12 @@ var Gmail = function () {
 		working = true;
 		var  s = gmail2.messages(query)
 		self.getAllPages(gmail2, s, query);
-		
+		console.log( 'part 1');
 
 	}
 
 	self.getAllPages = function(client, s, query){
+        console.log( 'part 2');
 		s.on('data', function (d) {
 			try{
 				db.saveMessages(self.convertMesssage(d));
