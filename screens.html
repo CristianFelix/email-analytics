@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Screenshots</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                box-sizing: border-box;                
+            }
+            body, html, .wrapper, .wrapper ul {
+                height: 100%;
+                width: 100%;
+            }
+            .wrapper ul {
+                position: relative;             
+                overflow: hidden;   
+            }
+            .wrapper ul li {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                display: table;
+                visibility: collapse;
+            }
+            .wrapper ul li.active {
+                visibility: visible;
+            }
+            .wrapper ul li .slide {
+                display: table-cell;
+                text-align: center;
+                vertical-align: middle
+            }
+            .wrapper ul li img {
+                width: 75%;
+                height: auto;
+            }
+            .wrapper .left, .wrapper .right {
+                position: absolute;
+                top: 0;
+                bottom: 0;                
+                width: 100px;
+                background-image: url(css/arrow.png);
+                background-repeat: no-repeat;
+                background-size: 40px auto;
+                background-position: center center;
+                opacity: .75;
+            }
+            .wrapper .left:hover, .wrapper .right:hover {
+                opacity: 1;
+            }
+            .wrapper .left {
+                transform: rotate(180deg);
+                left: 0;
+            }
+            .wrapper .right {
+                right: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <ul>
+                <li class="active"><div class="slide"><img src="imgs/ss4.png" alt="screen"></div></li>
+                <li><div class="slide"><img src="imgs/ss1.png" alt="screen"></div></li>
+                <li><div class="slide"><img src="imgs/ss2.png" alt="screen"></div></li>
+                <li><div class="slide"><img src="imgs/ss3.png" alt="screen"></div></li>
+            </ul>
+            <div class="left"></div>
+            <div class="right"></div>
+        </div>
+        <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script>
+            var slide = 0;
+            $("div.left").click(function () {
+                slide -= slide == 0 ? -3 : 1;
+                $("ul li").removeClass("active");
+                $($("ul li")[slide]).addClass("active");
+            });
+            $("div.right").click(function () {
+                slide += slide == 3 ? -3 : 1;
+                $("ul li").removeClass("active");
+                $($("ul li")[slide]).addClass("active");
+            });
+        </script>
+    </body>
+</html>
