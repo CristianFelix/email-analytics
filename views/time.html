@@ -1,11 +1,49 @@
-<div id="Time" class="widget">
+<div id="Time" class="widget"  ng-controller="TimeCtrl">
+    <div class="localLoading">Loading</div>
     <div class="wTitle">
         <h2><i class="fa fa-caret-down min"></i> Time to Answer
             <i class="fa fa-question help">
                 <span class="help-content">
-                    This is a help content for time to answer
+                    This visualization shows the average time between the receiving/sending of the message and it's reply. <br> <br> 
+                    <ul>
+                    <li><b>Domain </b> is the domain of the contact <br></li>
+                    <li><b>You </b> is the average time you take to answer the contact <br></li>
+                    <li><b>Contact </b> is the average time the contact take to answer you <br></li>
+                </ul>
                 </span>
+                
             </i>
         </h2>
+    </div>
+    <div>
+        <div class="TimeCtrlTable">
+            <table class="groupedTable">
+                <tr>
+                    <th>Domain</th>
+                    <th>You</th>
+                    <th>Contact</th>
+                </tr>
+                <tr class="masterRow" ng-repeat-start="domain in Time" ng-click="toggleGroup(this)" >
+                    <td><i class="fa " ng-class="{ 'fa-caret-down': domain.show, 'fa-caret-right': !domain.show}" ></i> 
+                        <i class="fa fa-stop" style="color: {{ domain.color }}"></i>
+                        <a href="https://mail.google.com/mail/u/0/#search/{{domain._id}}+after%3A+{{ $parent.start | dateString }}+before%3A+{{ $parent.end | dateString }}" target="_blank">{{ domain._id }}</a></td>
+                    <td>{{ domain.You | timeStamp}}</td>
+                    <td>{{ domain.Them | timeStamp }}</td>
+                </tr>
+                <tr class="childRow" ng-repeat="contact in domain.Contacts" ng-show="domain.show">
+                    <td ng-click="loadContact(contact._id)"> {{ contact._id.name | limitTo: 25 }}</td>
+                    <td>{{ contact.You | timeStamp}}</td>
+                    <td>{{ contact.Them | timeStamp }} </td>
+                </tr>
+                <tr class="endRow" ng-repeat-end>
+                    <td></td><td></td><td></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="TimeCtrlTablePies">
+            <div id="TimeCtrlTablePie1" style="float:left"></div>
+            <div id="TimeCtrlTablePie2"></div>
+        </div>
     </div>
 </div>

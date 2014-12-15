@@ -15,7 +15,6 @@
             </div>
             <ul class="menu">
                 <li class="active"><a href="#Summary"><i class="glyphicon glyphicon-list-alt"></i> <span>Summary</span></a></li>
-                <li><a href="#Unread"><i class="glyphicon glyphicon-envelope"></i> <span>Unread Emails</span></a></li>
                 <li><a href="#Time"><i class="glyphicon glyphicon-time"></i> <span>Time to Answer</span></a></li>
                 <li><a href="#Frequent"><i class="glyphicon glyphicon-user"></i> <span>Frequent Contacts</span></a></li>
                 <li><a href="#Contact"><i class="fa fa-line-chart"></i> <span>Contact History</span></a></li>
@@ -61,16 +60,15 @@
                 </div>
             </div>
             <div class="userDetails">
-                <span>Tim Cook </span>
-                <a href="#" class="profileImg" style="background-image: url('/imgs/profile/tim.jpg')"></a>
+                <span>Cristian Felix </span>
+                <a href="#" class="profileImg" style="background-image: url('https://lh4.googleusercontent.com/-F871f6uQ9zo/AAAAAAAAAAI/AAAAAAAADyg/YNzLMwD6nXM/photo.jpg')"></a>
             </div>
         </div>
         <div id="container">
             <!----- Summary ------>
             <ng-include src="'views/summary.html'"></ng-include>
 
-            <!----- Unread Emails ------>
-            <ng-include src="'views/unread.html'"></ng-include>
+
 
             <!----- Time to Answer ------>
             <ng-include src="'views/time.html'"></ng-include>
@@ -91,6 +89,9 @@
         <script src="src/charts.js" charset="utf-8"></script>
         <script src="src/ctrlMain.js" charset="utf-8"></script>
         <script src="src/ctrlSummary.js" charset="utf-8"></script>
+        <script src="src/ctrlTimeToAnser.js" charset="utf-8"></script>
+        <script src="src/ctrlFrequent.js" charset="utf-8"></script>
+        <script src="src/ctrlContactDetail.js" charset="utf-8"></script>
         <script src="src/services.js"></script>
         <script src="src/main.js"></script>
     </body>

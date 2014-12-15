@@ -1,11 +1,73 @@
-<div id="Contact" class="widget">
+<div id="Contact" class="widget" ng-controller="SummaryContactCtrl">
     <div class="wTitle">
-        <h2><i class="fa fa-caret-down min"></i> Contact History
+        <h2><i class="fa fa-caret-down min"></i> Contact History 
             <i class="fa fa-question help">
                 <span class="help-content">
-                    This is a help content for contact history
+                    This visualization shows the summary for an especific contact, you can type the contact email on the box and click in go.
                 </span>
             </i>
         </h2>
+        
     </div>
+    <div style="disply:none">
+        Contact: <input style="width: 250px;" class="searchBox" ng-model="email"  type="text" /> <button ng-click="load()" >Go</button><br />
+    </div>
+    <div ng-show="ContactSummary">
+        <h2><a href="https://mail.google.com/mail/u/0/#search/{{email}}+after%3A+{{ start | dateString }}+before%3A+{{ end | dateString }}" target="_blank">{{ ContactName }}</a></h2>
+        <ul class="sumaryList">
+            <li>
+                <span>{{ ContactSummary.messages }} </span><span>emails</span>
+            </li>
+            <li>
+                <span>{{ ContactSummary.received }}</span><span>emails received</span>
+            </li>
+            <li>
+                <span>{{ ContactSummary.sent }} </span><span>emails sent</span>
+            </li>
+            <li>
+                <span>{{ ContactSummary.replied }} </span><span>replied</span>
+            </li>
+            <li>
+                <span>{{ ContactSummary.takeToReply | timeStamp }} </span><span>you take to reply</span>
+            </li>
+            <li>
+                <span>{{ ContactSummary.takeToBeAnswared | timeStamp}} </span><span>he or she takes to answer</span>
+            </li>
+        </ul>
+        <br>
+        <div class="wTitle">
+            <h3></h3>
+        </div>
+        <ul class="liCharts3">
+            <li id="ContactSummaryMonth">
+                <h4>During the Month</h4>
+                <div></div>
+            </li>
+            <li id="ContactSummaryWeek">
+                <h4>During the Week</h4>
+                <div></div>
+            </li>
+            <li id="ContactSummaryDay">
+                <h4>During the Day</h4>
+                <div></div>
+            </li>
+        </ul>
+        <div class="legend">
+            <span><i class="colorSent fa fa-stop"></i> Sent</span>
+            <span><i class="colorReceived fa fa-stop"></i> Received</span>
+        </div>
+        <br><br>
+        <div class="wTitle">
+            <h3><b>Top Threads</b></h3>
+        </div>
+        <table class="emailList">
+            <tr ng-class="{read: !thread.Read}" ng-repeat="thread in ContactSummary.TopThreads">
+                <td ng-class="{fa: thread.Star, 'fa-star': thread.Star}"></td>
+                <td class="contacts"><a href="https://mail.google.com/mail/u/0/#inbox/{{thread._id}}" target="_blank">{{ thread.Contacts | groupContacts: thread.NumMsg }}</a></td>
+                <td class="subject"><a href="https://mail.google.com/mail/u/0/#inbox/{{thread._id}}" target="_blank">{{ thread.Subject | limitTo: 50 }}</a></td>
+                <td class="date">{{ thread.Date |  dateSmall }}</td>
+            </tr>
+        </table>
+    </div>
+    
 </div>

@@ -4,8 +4,6 @@ var DB = require('./server/db.js');
 var db = new DB();
 var app = express();
 var moment = require('moment');
-console.log(moment("Fri, 12 Dec 2014 16:36:55 -0800 (PST)").toISOString());
-
 
 app.set('port', (process.env.PORT || 5000))
 
@@ -32,33 +30,26 @@ app.use("/views", express.static(__dirname +'/views'));
 
 //Routes ------------------------------------------------------------------------------------
 	app.get('/', function(request, response) {
-		//console.log("/");
 	  response.sendFile(__dirname + '/login.html');
 	})
 
 	//Login --------------------
 	app.get('/login', function(request, response) {
-		//console.log("/login");
 	  response.sendFile(__dirname + '/login.html');
 	})
 
 	app.get('/home', function(request, response) {
-		//console.log("/home");
 	  response.sendFile(__dirname + '/index.html');
 	})
 
 	app.get('/signin', function(request, response) {
-		//console.log("/signin");
 		account = new Account();
 	  	response.redirect(account.login());
 	})
 
 	app.get('/oauth', function(request, response) {
-		//console.log("/oauth");
 		var code = request.param('code')
-		//console.log("2");
 		var account = new Account(code);
-		//console.log("3");
 		account.getUser(function(user){
 			console.log("Calling");
 			if(!user){
@@ -71,14 +62,80 @@ app.use("/views", express.static(__dirname +'/views'));
 		})
 	});
 
-	function getUser(){
+var user = "cristian.felix@gmail.com";
+//API ------------------------------------------------------------------------------------
+	app.get('/api/Histogram/', function(request, response) {
+		db.histogram(user, function(result){
+			response.json(result);
+		}) 
+	})
+    
+    app.get('/api/Summary', function(request, response) {
+        var start = moment(request.param('start')).toDate();
+        var end = moment(request.param('end')).toDate();
+		db.summary(start, end,  user, function(result){
+			response.json(result);
+		}) 
+	})
+    
+    
+    app.get('/api/timeToAnswer', function(request, response) {
+        var start = moment(request.param('start')).toDate();
+        var end = moment(request.param('end')).toDate();
+		db.timeToAnswer(start, end,  user, function(result){
+			response.json(result);
+		}) 
+	})
+    
+    app.get('/api/frequentContacts', function(request, response) {
+        var start = moment(request.param('start')).toDate();
+        var end = moment(request.param('end')).toDate();
+		db.frequent(start, end,  user, function(result){
+			response.json(result);
+		}) 
+	})
+    
+    app.get('/api/summaryContact', function(request, response) {
+        var start = moment(request.param('start')).toDate();
+        var end = moment(request.param('end')).toDate();
+        var contact = request.param('contact');
+		db.ContactSummary(start, end,  user, contact, function(result){
+			response.json(result);
+		}) 
+	})
+    
+    
+    
+    
+    
+    
 
-	}
 
 
 
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Start ------------------------------------------------------------------------------------
 
 	app.listen(app.get('port'), function() {
 	  console.log("Node app is running at localhost:" + app.get('port'))

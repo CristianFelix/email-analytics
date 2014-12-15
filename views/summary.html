@@ -3,14 +3,16 @@
         <h2><i class="fa fa-caret-down min"></i> Summary 
             <i class="fa fa-question help">
                 <span class="help-content">
-                    This is a help content for summary
+                    The summary presents an overview of the period, it is possible to see how you email behaves along of the month, week or even the day </br>
+                    The amount in the charts is the sum of the messages in the give period, for example, in the <i>During Week</i> chart the bar correponding to <i>Sun</i> 
+                means how many messages in total did you receive on sundays in the given period.
                 </span>
             </i>
         </h2>
     </div>
     <ul class="sumaryList">
         <li>
-            <span>{{ Summary.conversations }} </span><span>conversations</span>
+            <span>{{ Summary.messages }} </span><span>emails</span>
         </li>
         <li>
             <span>{{ Summary.received }}</span><span>emails received</span>
@@ -19,18 +21,18 @@
             <span>{{ Summary.sent }} </span><span>emails sent</span>
         </li>
         <li>
-            <span>{{ Summary.replied }}% </span><span>replied</span>
+            <span>{{ Summary.replied }} </span><span>replied</span>
         </li>
         <li>
             <span>{{ Summary.takeToReply | timeStamp }} </span><span>you take to reply</span>
         </li>
         <li>
-            <span>{{ Summary.takeToBeAnswered | timeStamp}} </span><span>people take to answer you</span>
+            <span>{{ Summary.takeToBeAnswared | timeStamp}} </span><span>people take to answer you</span>
         </li>
     </ul>
-
+    <br>
     <div class="wTitle">
-        <h3>Distribution</h3>
+        <h3></h3>
     </div>
     <ul class="liCharts3">
         <li id="SummaryMonth">
@@ -50,15 +52,15 @@
         <span><i class="colorSent fa fa-stop"></i> Sent</span>
         <span><i class="colorReceived fa fa-stop"></i> Received</span>
     </div>
-    <br>
+    <br><br>
     <div class="wTitle">
-        <h3>Top Threads</h3>
+        <h3><b>Top Threads</b></h3>
     </div>
     <table class="emailList">
         <tr ng-class="{read: !thread.Read}" ng-repeat="thread in Summary.TopThreads">
             <td ng-class="{fa: thread.Star, 'fa-star': thread.Star}"></td>
-            <td class="contacts">{{ thread.Contacts | groupContacts: thread.NumMsg }}</td>
-            <td class="subject">{{ thread.Subject }}</td>
+            <td class="contacts"><a href="https://mail.google.com/mail/u/0/#inbox/{{thread._id}}" target="_blank">{{ thread.Contacts | groupContacts: thread.NumMsg }}</a></td>
+            <td class="subject"><a href="https://mail.google.com/mail/u/0/#inbox/{{thread._id}}" target="_blank">{{ thread.Subject | limitTo: 50 }}</a></td>
             <td class="date">{{ thread.Date |  dateSmall }}</td>
         </tr>
     </table>

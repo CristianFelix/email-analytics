@@ -1,9 +1,11 @@
 var EmailApp = angular.module('EmailApp', ['emailServices']);
 
+
 EmailApp.filter('timeStamp', function () {
     return function (input) {
-
-        return moment.duration(input, 'minutes').humanize();
+        if(input == 0 || input == "i")
+            return "-";
+        return moment.duration(input, 'minutes').humanize().replace("minutes","min");
     };
 });
 
@@ -12,6 +14,14 @@ EmailApp.filter('dateSmall', function () {
         return new moment(input).format("MMM D, YYYY");
     };
 });
+
+EmailApp.filter('dateString', function () {
+    return function (input) {
+        return new moment(input).format("YYYY-MM-DD");
+    };
+});
+
+
 
 EmailApp.filter('star', function () {
     return function (input) {
@@ -24,9 +34,13 @@ EmailApp.filter('groupContacts', function () {
         result = "";
         if (input && input.length > 0) {
             input.forEach(function (item) {
-                result += item.Name + ", ";
+                if(item.name.length > 5)
+                    result += item.name + ", ";
+                else 
+                    result += item.email+ ", ";
             });
             result = result.substr(0, result.length - 2);
+            result = result.substr(0, 30) + "...";
             result += " (" + b + ")";
 
         }
@@ -37,13 +51,23 @@ EmailApp.filter('groupContacts', function () {
 //Main Controller
 EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
     $scope.init = function () {
-
+        
+        
+        
         //Get date and draw istogram
         _histDate = new DateHistogram("#mainHistogram");
         _histDate.changed = function (start, end) {
             $scope.start = start;
             $scope.end = end;
             if (!$scope.$$phase) $scope.$apply();
+            
+            $("#topbar .dropdown .datepicker.from").datepicker("option", "maxDate", end);
+            $("#topbar .dropdown .datepicker.to").datepicker("option", "minDate", start);
+            $("#topbar .dropdown .datepicker.from").datepicker( "setDate", start );
+            $("#topbar .dropdown .datepicker.to").datepicker( "setDate", end );
+            
+            $scope.StartC = start;
+            $scope.EndC = end;
             $scope.getFilteredData();
         };
         _histDate.changing = function (start, end) {
@@ -54,19 +78,36 @@ EmailApp.controller('MainCtrl', ['$scope', 'DB', function ($scope, DB) {
         DB.getGeneralHistogram(_histDate.draw);
 
         $scope.changeDates = function (start, end) { // called from datepickers // main.js:48
-            $scope.start = start,
+            if(end > _histDate.data[_histDate.data-1])
+                end = _histDate.data[_histDate.data-1];
+            if(start < _histDate.data[0])
+                start = _histDate.data[0];
+            
+            $scope.start = start;
             $scope.end = end;
             if (!$scope.$$phase) $scope.$apply();
+            _histDate.setDates(start, end);
             $scope.getFilteredData();
+            
         }
 
         //Remove loading
         document.getElementById('Loading').style.display = "none";
     }
-
+    $scope.count = 0;
     $scope.getFilteredData = function () {
+        $scope.count++;
+        
+        document.getElementById('Loading').style.display = "block";
+        if($scope.count > 6) 
+            document.getElementById('Loading').style.opacity = 0.5;
+
         DB.getMainData($scope.start, $scope.end, function (data) {
+            console.log(data);
             $scope.Summary = data.Summary;
+            $scope.Time = data.Time;
+            $scope.Frequent = data.Frequent;
+            document.getElementById('Loading').style.display = "none";
         });
 
         setScroolSpy(0);

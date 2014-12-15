@@ -1,11 +1,60 @@
-<div id="Frequent" class="widget">
+<div id="Frequent" class="widget" ng-controller="FrequentCtrl">
     <div class="wTitle">
         <h2><i class="fa fa-caret-down min"></i> Frequent Contacts
             <i class="fa fa-question help">
                 <span class="help-content">
-                    This is a help content for frequent contacts
+                    This visualizations shows your top most frequent contacts, grouped by domin
                 </span>
             </i>
         </h2>
+    </div>
+    <div style="margin-top: 25px; margin-bottom: 25px;">
+        <div style="float: left; padding-left: 20px;padding-right: 20px;">
+            <table class="groupedTable">
+                <tr>
+                    <th>Domain</th>
+                    <th colspan="2">Received</th>
+                    
+                </tr>
+
+                <tr class="masterRow" ng-repeat-start="domain in Frequent.Received | limitTo:10" ng-click="toggleGroup(this)" >
+                    <td><i class="fa " ng-class="{ 'fa-caret-down': domain.show, 'fa-caret-right': !domain.show}" ></i> 
+                        <a href="https://mail.google.com/mail/u/0/#search/{{domain._id}}+after%3A+{{ $parent.start | dateString }}+before%3A+{{ $parent.end | dateString }}" target="_blank">{{ domain._id }}</a></td>
+                    <td style="text-align:right">{{ domain.count }}</td>
+                    <td><div class="tableBar colorReceived" style="width: {{ $parent.getRBar(domain.count) }}"></div>  </td>
+                </tr>
+                <tr class="childRow" ng-repeat="contact in domain.contacts" ng-show="domain.show">
+                    <td  ng-click="loadContact(contact)"> {{ contact.name | limitTo: 25 }}</td>
+                    <td style="text-align: right">{{ contact.count}}</td>
+                    <td><div class="tableBar colorReceived" style="opacity: 0.5; width: {{ $parent.$parent.getRBar(contact.count) }}"></div>  </td>
+                </tr>
+                <tr class="endRow" ng-repeat-end>
+                    <td></td><td colspan="2"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="padding-left: 20px;padding-right: 20px;">
+            <table class="groupedTable">
+                <tr>
+                    <th>Domain</th>
+                    <th colspan="2">Sent</th>
+                </tr>
+
+                <tr class="masterRow" ng-repeat-start="domain in Frequent.Sent | limitTo:10" ng-click="toggleGroup(this)" >
+                    <td><i class="fa " ng-class="{ 'fa-caret-down': domain.show, 'fa-caret-right': !domain.show}" ></i> 
+                        <a href="https://mail.google.com/mail/u/0/#search/{{domain._id}}+after%3A+{{ $parent.start | dateString }}+before%3A+{{ $parent.end | dateString }}" target="_blank">{{ domain._id }}</a></td>
+                    <td style="text-align: right">{{ domain.count }}</td>
+                    <td><div class="tableBar colorSent" style="width: {{ $parent.getSBar(domain.count) }}"></div>  </td>
+                </tr>
+                <tr class="childRow" ng-repeat="contact in domain.contacts" ng-show="domain.show">
+                    <td ng-click="loadContact(contact)"> {{ contact.name | limitTo: 25 }}</td>
+                    <td style="text-align: right">{{ contact.count}}</td>
+                    <td><div class="tableBar colorSent" style="opacity: 0.5; width: {{ $parent.$parent.getSBar(contact.count) }}"></div>  </td>
+                </tr>
+                <tr class="endRow" ng-repeat-end>
+                    <td></td><td colspan="2"></td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>

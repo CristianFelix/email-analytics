@@ -15,7 +15,7 @@ body {
 
 #Loading {
     z-index: 100;
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     right: 0px;
@@ -24,6 +24,7 @@ body {
     text-align: center;
     vertical-align: middle;
     padding-top: 50px;
+    
 }
 
 #Loading span {
@@ -258,12 +259,13 @@ body {
     width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    min-height: 500px;
+    min-height: 100px;
     background-color: white;
     box-shadow: 0px 2px 5px #CCC;
     padding: 10px;
     margin-bottom: 30px;
     transition: min-height .3s ease-in-out;
+    overflow: hidden;
 }
 
 .widget.minimize {
@@ -393,7 +395,7 @@ body {
 
 .emailList {
     width: 100%;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .emailList tr {
@@ -545,4 +547,56 @@ body {
     #sidebar #logo i.close-menu {
         display: block;
     }
+}
+
+.localLoading{
+    position: relative;
+    width: 990px;
+    background-color: white;
+    height: 90%;
+    opacity: 0.8;
+    display: none;
+}
+.TimeCtrlTable{
+    float: left;
+}
+
+.TimeCtrlTablePies{
+    overflow: hidden;
+}
+
+.groupedTable{
+    font-size: 12px;
+    width: 450px;
+}
+
+.groupedTable tr:hover {
+    background-color: #E7EBEE;
+    cursor: pointer;
+}
+
+.groupedTable th{
+    font-size: 16px;
+   border-bottom: solid 1px #ccc;
+}
+
+.groupedTable td{
+    padding-right: 24px;
+    height: 18px;
+}
+.masterRow tr{
+    background-color: #EEE;
+}
+
+.childRow td:first-child{
+    padding-left: 10px;
+}
+
+.endRow td{
+    border-bottom: solid 1px #ccc;
+    height: 10px !important;
+}
+
+.tableBar{
+    height: 10px;
 }
