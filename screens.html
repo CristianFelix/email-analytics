@@ -14,9 +14,14 @@
                 height: 100%;
                 width: 100%;
             }
+            .wrapper {
+                text-align: center;
+                padding-top: 10px;
+            }
             .wrapper ul {
                 position: relative;             
                 overflow: hidden;   
+                margin-top: -55px;                
             }
             .wrapper ul li {
                 position: absolute;
@@ -36,8 +41,19 @@
                 vertical-align: middle
             }
             .wrapper ul li img {
-                width: 75%;
+                width: 750px;
                 height: auto;
+                border: 3px solid #FFF;
+                box-shadow: 0 0  10px -2px #888;
+            }
+            .wrapper ul li i {
+                font-style: normal;
+                display: block;
+                font-size: 18px;
+                font-family: sans-serif;
+                max-width: 750px;
+                margin: auto;
+                margin-top: 25px;
             }
             .wrapper .left, .wrapper .right {
                 position: absolute;
@@ -64,11 +80,22 @@
     </head>
     <body>
         <div class="wrapper">
+            <img src="imgs/logo.png" alt="logo" height="50px">
             <ul>
-                <li class="active"><div class="slide"><img src="imgs/ss4.png" alt="screen"></div></li>
-                <li><div class="slide"><img src="imgs/ss1.png" alt="screen"></div></li>
-                <li><div class="slide"><img src="imgs/ss2.png" alt="screen"></div></li>
-                <li><div class="slide"><img src="imgs/ss3.png" alt="screen"></div></li>
+                <li class="active"><div class="slide"><img src="imgs/ss4.png" alt="screen">
+                        <i>The summary shows an overview of the email usage and you can use the topbar to select the date range.
+                            Also you can use the left menu to navigate through the visualizations.</i>
+                    </div>
+                </li>
+                <li><div class="slide"><img src="imgs/ss1.png" alt="screen">
+                        <i>This visualization shows the average time between the receiving/sending of the message and it's reply.</i>
+                    </div></li>
+                <li><div class="slide"><img src="imgs/ss2.png" alt="screen">
+                        <i>This visualizations shows your top most frequent contacts, grouped by domin.</i>
+                    </div></li>
+                <li><div class="slide"><img src="imgs/ss3.png" alt="screen">
+                        <i>This visualization shows the summary for an especific contact, you can type the contact email on the box and click in go.</i>
+                    </div></li>
             </ul>
             <div class="left"></div>
             <div class="right"></div>
